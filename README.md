@@ -4,7 +4,8 @@
 ## Repositório para o desenvolvimento de um Problem Set (PSET) da disciplina de Banco de Dados I, do curso de Ciência da Computação, da Univerdidade de Vila Velha, Espírito Santo, Brasil.
 
 ### Primero fiz um Modelo de Dados no app DbSchema.
-<img width="892" alt="Modelo de Dados PSET" src="https://github.com/mariaestevanovic/uvv_bd1_cc1mb/assets/65196712/db664ade-b05f-4912-a922-fc285186ecd8">
+<img width="892" alt="Modelo de Dados PSET" src="https://github.com/mariaestevanovic/uvv_bd1_cc1mb/assets/65196712/d06b3d1d-5ce0-4123-b643-33678c0f1bfc">
+
 
 ### Depois gerei um código em PostgreSQL pelo próprio DbSchema e fiz uns ajustes pelo VSCode no código, o chamando de Código Global (em SQL).
 
