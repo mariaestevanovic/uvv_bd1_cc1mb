@@ -5,7 +5,10 @@ DROP DATABASE IF EXISTS uvv;
 DROP USER IF EXISTS Maria;
 
 -- Criar usuário
-CREATE USER Maria;
+CREATE USER Maria with 
+CREATEDB
+CREATEROLE
+ENCRYPTED PASSWORD '2004';
 
 -- Criar o Banco de Dados
 CREATE DATABASE uvv
@@ -19,7 +22,11 @@ CREATE DATABASE uvv
 \c uvv;
 
 -- Criar esquema
-CREATE SCHEMA lojas;
+CREATE SCHEMA AUTHORIZATION Maria;
+
+-- Trocar esquema
+ALTER USER Maria
+SET SEARCH_PATH TO lojas, "$user", public;
 
 -- Criar a tabela clientes
 CREATE  TABLE clientes ( 
@@ -213,3 +220,8 @@ COMMENT ON COLUMN pedidos_itens.preco_unitario       IS 'Preço unitário do pro
 COMMENT ON COLUMN pedidos_itens.quantidade           IS 'Quantidade de cada produto.'                              ;
 
 COMMENT ON COLUMN pedidos_itens.envio_id             IS 'Número de identificação do envio de cada produto da loja.';
+
+-- Adicionar as restrições pedidas
+ALTER TABLE lojas
+ADD CONSTRAINT endereco_check
+CHECK (endereco_web IS NOT NULL OR endereco_fisico IS NOT NULL);
