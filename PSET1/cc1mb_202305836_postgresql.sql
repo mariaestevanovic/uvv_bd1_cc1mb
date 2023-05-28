@@ -225,3 +225,31 @@ COMMENT ON COLUMN pedidos_itens.envio_id             IS 'Número de identificaç
 ALTER TABLE lojas
 ADD CONSTRAINT endereco_check
 CHECK (endereco_web IS NOT NULL OR endereco_fisico IS NOT NULL);
+
+ALTER TABLE pedidos
+ADD CONSTRAINT pedidos_status
+CHECK (status IN ('CANCELADO', 'COMPLETO', 'ABERTO', 'PAGO', 'REMBOLSADO', 'ENVIADO'));
+
+ALTER TABLE envios
+ADD CONSTRAINT envios_status
+CHECK (status IN ('CRIADO', 'ENVIADO', 'TRANSITO', 'ENTREGUE'));
+
+ALTER TABLE produtos
+ADD CONSTRAINT produtos_preco
+CHECK (preco_unitario >= 0); 
+
+ALTER TABLE estoques
+ADD CONSTRAINT estoques_quantidade
+CHECK (quantidade >= 0); 
+
+ALTER TABLE pedidos_itens
+ADD CONSTRAINT pedidos_itens_preco
+CHECK (preco_unitario >= 0); 
+
+ALTER TABLE pedidos_itens
+ADD CONSTRAINT pedidos_itens_quantidade
+CHECK (quantidade >= 0); 
+
+ALTER TABLE pedidos_itens
+ADD CONSTRAINT pedidos_itens_numero_da_linha
+CHECK (numero_da_linha >= 0);
